@@ -7,13 +7,31 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    
+    @State private var showLoginView = false
+
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            
+            Button("Login") {
+                self.showLoginView = true
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(10)
+            .sheet(isPresented: $showLoginView) {
+                LoginView()
+            }
+            
         }
         .padding()
     }
